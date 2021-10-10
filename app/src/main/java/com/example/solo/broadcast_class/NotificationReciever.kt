@@ -30,9 +30,18 @@ class NotificationReciever : BroadcastReceiver() {
             ApplicationClass.PREVIOUS -> playNextSong(false, context)
 
             ApplicationClass.EXIT -> {
-                musicServices!!.stopForeground(true)
-                musicServices = null
-                exitProcess(1)
+
+                if (musicServices!!.mediaPlayer != null && !musicServices!!.mainActivity.isDestroyed) {
+                    pauseMusic()
+                    musicServices!!.stopForeground(true)
+
+                } else if (musicServices!!.mediaPlayer != null && musicServices!!.mainActivity.isDestroyed) {
+                    musicServices!!.mediaPlayer!!.pause()
+                    musicServices!!.mediaPlayer!!.stop()
+                    musicServices!!.mediaPlayer!!.release()
+                    musicServices!!.stopForeground(true)
+//
+                }
             }
         }
         if (intent.action == AudioManager.ACTION_AUDIO_BECOMING_NOISY) {

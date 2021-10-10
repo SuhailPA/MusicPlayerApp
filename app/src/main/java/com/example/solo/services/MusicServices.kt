@@ -106,12 +106,12 @@ class MusicServices : Service() {
         Thread{Thread.sleep(timerValue)
             Log.i("ThreadTest", "working")
             if (isTimer && timerValueInSec==timerValue){
-
                 isTimer=false
                 if (mediaPlayer!=null && mainActivity.isDestroyed){
                     musicServices!!.mediaPlayer!!.pause()
                     musicServices!!.mediaPlayer!!.stop()
                     musicServices!!.stopForeground(true)
+                    musicServices!!.mediaPlayer!!.release()
                 }else {
                     if (musicActivity.isVisible) {
                         mainActivity.runOnUiThread {
