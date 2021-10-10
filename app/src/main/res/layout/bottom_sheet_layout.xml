@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/bottomSheetMusicThumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintRight_toLeftOf="@+id/bottomSheetSongName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/without_blur" />
+
+        <TextView
+            android:id="@+id/bottomSheetSongName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song Name"
+            app:layout_constraintBottom_toTopOf="@+id/bottomSheetPlayButton"
+            app:layout_constraintLeft_toRightOf="@id/bottomSheetMusicThumbnail"
+            app:layout_constraintRight_toLeftOf="@+id/bottomSheetduration"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bottomSheetduration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/bottomSheetNextButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.858"
+            app:layout_constraintStart_toEndOf="@+id/bottomSheetSongName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/bottomSheetPlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bottomSheetNextButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bottomSheetPreviousButton"
+            app:layout_constraintTop_toBottomOf="@+id/bottomSheetSongName"
+            app:srcCompat="@drawable/play_button" />
+
+        <ImageView
+            android:id="@+id/bottomSheetNextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bottomSheetPlayButton"
+            app:layout_constraintTop_toBottomOf="@+id/bottomSheetduration"
+            app:srcCompat="@drawable/next_black" />
+
+        <ImageView
+            android:id="@+id/bottomSheetPreviousButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bottomSheetPlayButton"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/bottomSheetMusicThumbnail"
+            app:layout_constraintTop_toBottomOf="@+id/bottomSheetSongName"
+            app:srcCompat="@drawable/previous_button" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/musicFragment"
+        android:name="com.example.solo.main_fragments.MusicFragment"
+        android:label="Music"
+        tools:layout="@layout/fragment_music">
+
+        <action
+            android:id="@+id/action_musicFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="songId"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.solo.main_fragments.MainFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_mainFragment_to_musicFragment"
+            app:destination="@id/musicFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_songListsFragment"
+            app:destination="@id/songListsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_playlistsFragment"
+            app:destination="@id/playlistsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/songListsFragment"
+        android:name="com.example.solo.main_fragments.SongListsFragment"
+        android:label="Favourites">
+        <action
+            android:id="@+id/action_songListsFragment_to_musicFragment"
+            app:destination="@id/musicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playlistsFragment"
+        android:name="com.example.solo.main_fragments.PlaylistsFragment"
+        android:label="Playlists"
+        tools:layout="@layout/fragment_playlists" >
+        <action
+            android:id="@+id/action_playlistsFragment_to_musicFragment"
+            app:destination="@id/musicFragment" />
+        <argument
+            android:name="playlistName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_playlistsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+</navigation>
