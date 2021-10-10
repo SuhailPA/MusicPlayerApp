@@ -221,7 +221,7 @@ class MusicServices : Service() {
                 .setContentIntent(pendingIntent)
                 .setContentTitle(serviceList[position].songName)
                 .setContentText(serviceList[position].artistName)
-                .setSmallIcon(R.drawable.without_blur)
+                .setSmallIcon(R.drawable.playlist_background)
                 .setLargeIcon(image)
                 .setStyle(NotificationCompat.MediaStyle().setMediaSession(mediaSession.sessionToken))
                 .setPriority(androidx.core.app.NotificationCompat.PRIORITY_LOW)
