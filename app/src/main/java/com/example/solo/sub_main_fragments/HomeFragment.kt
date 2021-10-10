@@ -76,7 +76,6 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
             activity?.bindService(intent, this@HomeFragment, Context.BIND_AUTO_CREATE)
             activity?.startService(intent)
             readAllMusics()
-            showMessage(2)
         }else{
             val intent = Intent(activity, MusicServices::class.java)
             activity?.bindService(intent, this@HomeFragment, Context.BIND_AUTO_CREATE)
@@ -96,7 +95,7 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
         }else if (perValue==2){
             message="Phone state permission may be required in order to control the music system while calling"
         }else{
-            message="Permission is actually necessary to work the application"
+            message="Read media file permission && Phone state permission may be required in order to control the music system while calling"
         }
         AlertDialog.Builder(requireActivity())
                 .setMessage(message)
