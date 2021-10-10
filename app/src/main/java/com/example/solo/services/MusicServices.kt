@@ -4,6 +4,7 @@ import android.app.*
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.MediaMetadataRetriever
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.*
@@ -208,12 +209,20 @@ class MusicServices : Service() {
         val exitPendingIntent = PendingIntent.getBroadcast(baseContext, 0, exitIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
 
+        val songThumb=getImgArt(allMusicList[position].songPath)
+        val image = if (songThumb!=null) {
+            BitmapFactory.decodeByteArray(songThumb, 0, songThumb.size)
+        }else{
+                BitmapFactory.decodeResource(resources,R.drawable.music_thumbnail_blurred)
+            }
+
+
         val notification = androidx.core.app.NotificationCompat.Builder(baseContext, ApplicationClass.CHANNEL1)
                 .setContentIntent(pendingIntent)
                 .setContentTitle(serviceList[position].songName)
                 .setContentText(serviceList[position].artistName)
                 .setSmallIcon(R.drawable.without_blur)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.blurred_image))
+                .setLargeIcon(image)
                 .setStyle(NotificationCompat.MediaStyle().setMediaSession(mediaSession.sessionToken))
                 .setPriority(androidx.core.app.NotificationCompat.PRIORITY_LOW)
                 .setVisibility(androidx.core.app.NotificationCompat.VISIBILITY_PUBLIC)
@@ -253,6 +262,11 @@ class MusicServices : Service() {
         startForeground(13, notification)
     }
 
+    fun getImgArt(path:String):ByteArray?{
+        val retriever=MediaMetadataRetriever()
+        retriever.setDataSource(path)
+        return retriever.embeddedPicture
+    }
     fun createMediaPlayer() {
         try {
             if (musicServices!!.mediaPlayer == null)
