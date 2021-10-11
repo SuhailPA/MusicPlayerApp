@@ -271,7 +271,7 @@ class MusicServices : Service() {
         try {
             if (musicServices!!.mediaPlayer == null)
                 musicServices!!.mediaPlayer = MediaPlayer()
-            musicServices!!.mediaPlayer!!.reset()
+                musicServices!!.mediaPlayer!!.reset()
                 musicServices!!.mediaPlayer!!.setDataSource(serviceList[position].songPath)
                 lastPlayedSongId = serviceList[position].songId
 

@@ -11,6 +11,8 @@ import android.os.Bundle
 import android.os.IBinder
 import android.provider.MediaStore
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
@@ -20,6 +22,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -179,10 +182,7 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
                     alertBoxForPlaylist(position, items[position], items)
                     true
                 }
-                R.id.removeFromPlaylist -> {
-                    alertBoxForRemoval(position, items)
-                    true
-                }
+
                 else ->   {
                     true
                 }
@@ -202,6 +202,9 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
         Log.i("PlaylistFileName", "Checking")
         adapterF = PlaylistsRecyclerAdapter(playlistFiles, null)
 
+
+
+
         GlobalScope.launch(Dispatchers.IO){
 
             var namelists = musicFavDao.readAllFiles() as MutableList<String>
@@ -219,6 +222,11 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
                     this.adapter=adapterPF
                     this.layoutManager=GridLayoutManager(requireActivity(),2)
                 }
+
+
+
+
+
                 val alertBoxInstance = alertBoxBuilder.show()
                 alertBox.alertBoxOk.setOnClickListener {
                     val playlistName = alertBox.playListNameEditText.text.toString()
@@ -274,50 +282,7 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
 
     }
 
-    private fun alertBoxForRemoval(position: Int, items: MutableList<MusicModelClass>) {
 
-
-        var alertDialog=AlertDialog.Builder(context)
-        alertDialog.setTitle("Delete")
-        alertDialog.setMessage("Are you sure to remove the song from playlist")
-
-        alertDialog.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
-
-            var name = items[position].playlistName
-
-            Log.i("NamePlaylist1", name)
-
-            GlobalScope.launch(Dispatchers.IO) {
-
-                musicFavDao.deleteSong(items[position])
-                checkPlaylistNames = musicFavDao.readAllFiles() as MutableList
-
-
-                for (item in checkPlaylistNames) {
-                    Log.i("NamePlaylist22", item)
-                }
-                Log.i("NamePlaylist", "-----------")
-
-                withContext(Dispatchers.Main) {
-                    items.removeAt(position)
-                    adapterS!!.notifyDataSetChanged()
-                    Toast.makeText(context, "Song removed from playlist", Toast.LENGTH_SHORT).show()
-                    if (!checkPlaylistNames.contains(name)) {
-                        Log.i("NamePlaylist", "Contains")
-                        playlistFiles.remove(name)
-
-                        var actions: NavDirections =
-                                PlaylistsFragmentDirections.actionPlaylistsFragmentToMainFragment()
-                        navController.navigate(actions)
-                    }
-
-                }
-            }
-        })
-        alertDialog.show()
-
-
-    }
 
 
     private val onClicked: (MusicModelClass, Int)->Unit={ musicModelClass: MusicModelClass, i: Int ->
@@ -329,14 +294,8 @@ class HomeFragment(var mainview: View) : Fragment(), ServiceConnection {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
-
             super.onCreateOptionsMenu(menu, inflater)
             inflater.inflate(R.menu.menu_options_menu, menu)
-
-
-
-
     }
 
 

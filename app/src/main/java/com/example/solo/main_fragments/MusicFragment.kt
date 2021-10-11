@@ -130,7 +130,7 @@ class MusicFragment : Fragment(), ServiceConnection {
                     musicBinding.timerSet.setImageResource(R.drawable.timer_on)
                     musicBinding.timerSelectionCard.visibility=View.GONE
                     musicServices!!.timerValueInSec=5000
-                    musicServices!!.timerServices(5000,requireActivity())
+                    musicServices!!.timerServices(5000, requireActivity())
                 }
 
                 musicBinding.timer15.setOnClickListener {
@@ -139,7 +139,7 @@ class MusicFragment : Fragment(), ServiceConnection {
                     musicBinding.timerSet.setImageResource(R.drawable.timer_on)
                     musicBinding.timerSelectionCard.visibility=View.GONE
                     musicServices!!.timerValueInSec=60000 * 15
-                    musicServices!!.timerServices(60000 * 15,requireActivity() )
+                    musicServices!!.timerServices(60000 * 15, requireActivity())
                 }
 
                 musicBinding.timer30.setOnClickListener {
@@ -148,7 +148,7 @@ class MusicFragment : Fragment(), ServiceConnection {
                     musicBinding.timerSet.setImageResource(R.drawable.timer_on)
                     musicBinding.timerSelectionCard.visibility=View.GONE
                     musicServices!!.timerValueInSec=60000 * 30
-                    musicServices!!.timerServices(60000 * 30,requireActivity())
+                    musicServices!!.timerServices(60000 * 30, requireActivity())
                 }
 
 
@@ -202,8 +202,13 @@ class MusicFragment : Fragment(), ServiceConnection {
         }
     }
 
-
-
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        if(menu.hasVisibleItems() && menu.size()!=0){
+            menu.findItem(R.id.ascending).isVisible = false
+            menu.findItem(R.id.descending).isVisible=false
+        }
+    }
 
     private fun favouriteIconCliked() {
 

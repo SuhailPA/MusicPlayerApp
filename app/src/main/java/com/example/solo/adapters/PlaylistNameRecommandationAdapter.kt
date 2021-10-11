@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import com.example.solo.R
 
 class PlaylistNameRecommandationAdapter(var playlistNames: List<String>,var editText: EditText?) : RecyclerView.Adapter<PlaylistNameRecommandationAdapter.PlaylistNames>() {
 
+    var filteredPlaylistNames= mutableListOf<String>()
     inner class PlaylistNames(Itemview: View) : RecyclerView.ViewHolder(Itemview) {
         var playlistTitle: TextView = Itemview.findViewById<TextView>(R.id.playlistNameRec)
         var playlistItem: CardView = Itemview.findViewById<CardView>(R.id.playlistItemRec)

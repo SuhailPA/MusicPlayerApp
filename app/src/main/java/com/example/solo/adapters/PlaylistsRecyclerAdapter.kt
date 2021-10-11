@@ -4,6 +4,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -14,9 +16,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PlaylistsRecyclerAdapter(var playlistNames: MutableList<String>, var onLongClick: ((Int, MutableList<String>) -> Unit)?) : RecyclerView.Adapter<PlaylistsRecyclerAdapter.PlaylistFiles>() {
-
 
     inner class PlaylistFiles(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         var playlistItem: CardView = ItemView.findViewById(R.id.playListItem)

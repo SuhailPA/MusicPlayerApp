@@ -49,13 +49,14 @@ class NotificationReciever : BroadcastReceiver() {
         }
         try {
             if (state.equals(TelephonyManager.EXTRA_STATE_RINGING )) {
-                pauseMusic()
+                if (musicServices!=null && musicServices!!.mediaPlayer!=null) pauseMusic()
+
             }
             if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
-                pauseMusic()
+                if (musicServices!=null && musicServices!!.mediaPlayer!=null) pauseMusic()
             }
             if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
-                playMusic()
+                if (musicServices!=null && musicServices!!.mediaPlayer!=null) playMusic()
             }
         }catch (e:Exception){
             Toast.makeText(context,e.toString(),Toast.LENGTH_SHORT).show()
