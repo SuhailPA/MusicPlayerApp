@@ -204,10 +204,7 @@ class MusicFragment : Fragment(), ServiceConnection {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
-        if(menu.hasVisibleItems() && menu.size()!=0){
-            menu.findItem(R.id.ascending).isVisible = false
-            menu.findItem(R.id.descending).isVisible=false
-        }
+        menu.clear()
     }
 
     private fun favouriteIconCliked() {
