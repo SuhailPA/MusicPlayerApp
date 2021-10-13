@@ -16,7 +16,9 @@
             android:layout_alignParentTop="true"
             app:tabTextColor="#9C9A9A"
             android:layout_alignParentEnd="true"
-            android:background="@color/black"
+
+            android:background="@android:color/black"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/musicRecyclerview">
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

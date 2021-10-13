@@ -25,7 +25,7 @@
                 android:id="@+id/constraintMusicLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="4:3"
+                app:layout_constraintDimensionRatio="4:4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -35,7 +35,7 @@
                     android:id="@+id/relativeLayout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintDimensionRatio="4:2"
+                    app:layout_constraintDimensionRatio="4:4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -57,9 +57,9 @@
                     android:id="@+id/mainMusicThumbnail"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:layout_constraintDimensionRatio="4:2"
-                    android:layout_marginTop="132dp"
                     android:src="@drawable/music_thumbnail"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="3:2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,21 +70,20 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:paddingTop="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintMusicLayout"
-                app:layout_constraintVertical_bias="0.59000003">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
                     android:id="@+id/timeCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:textColor="@color/white"
                     android:layout_marginBottom="15dp"
                     android:text="0:00"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toTopOf="@+id/seekBar2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -108,13 +107,12 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:progressTint="#BF04DF"
-
                     android:theme="@style/AppThemeTwo"
+                    android:thumbTint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/playFuntionalities"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.551"
-                    android:thumbTint="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/playFuntionalities"
                     tools:layout_editor_absoluteY="31dp" />
 
                 <LinearLayout
@@ -131,16 +129,10 @@
 
                     <ImageView
                         android:id="@+id/previousButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:src="@drawable/previous_button" />
 
-                    <ImageView
-                        android:id="@+id/previous10Seconds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="35dp"
-                        android:src="@drawable/fast_rewind" />
 
                     <RelativeLayout
                         android:layout_width="50dp"
@@ -159,24 +151,14 @@
 
 
                     <ImageView
-                        android:id="@+id/next10Seconds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="35dp"
-                        android:src="@drawable/fast_forward" />
-
-                    <ImageView
                         android:id="@+id/nextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_marginStart="35dp"
                         android:src="@drawable/next_black" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
             <LinearLayout
@@ -237,8 +219,8 @@
 
                     <ImageView
                         android:id="@+id/timer_off"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="32dp"
                         app:layout_constraintBottom_toBottomOf="parent"

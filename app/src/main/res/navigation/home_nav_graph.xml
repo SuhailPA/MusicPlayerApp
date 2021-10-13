@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/musicFragment"
-        android:name="com.example.solo.main_fragments.MusicFragment"
+        android:name="com.suhail_music_app.solo.main_fragments.MusicFragment"
         android:label="Music"
         tools:layout="@layout/fragment_music">
 
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.solo.main_fragments.MainFragment"
+        android:name="com.suhail_music_app.solo.main_fragments.MainFragment"
         android:label="Home">
         <action
             android:id="@+id/action_mainFragment_to_musicFragment"
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/songListsFragment"
-        android:name="com.example.solo.main_fragments.SongListsFragment"
+        android:name="com.suhail_music_app.solo.main_fragments.SongListsFragment"
         android:label="Favourites">
         <action
             android:id="@+id/action_songListsFragment_to_musicFragment"
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/playlistsFragment"
-        android:name="com.example.solo.main_fragments.PlaylistsFragment"
+        android:name="com.suhail_music_app.solo.main_fragments.PlaylistsFragment"
         android:label="Playlists"
         tools:layout="@layout/fragment_playlists" >
         <action
