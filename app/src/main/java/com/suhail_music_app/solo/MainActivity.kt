@@ -51,28 +51,17 @@ class MainActivity : AppCompatActivity(),ServiceConnection {
     }
 
 
-    //    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//
-//        when(keyCode){
-//            KeyEvent.KEYCODE_VOLUME_DOWN->{
-//                if (musicServices!=null && musicServices!!.isMute){
-//                    musicServices!!.mediaPlayer!!.setVolume(1.0F,1.0F)
-//                }
-//
-//            }
-//            KeyEvent.KEYCODE_VOLUME_UP->{
-//                if (musicServices!=null && musicServices!!.isMute){
-//                    musicServices!!.mediaPlayer!!.setVolume(1.0F,1.0F)
-//                }
-//            }
-//        }
-//        return true
-//    }
-
 
     override fun onStop() {
         super.onStop()
         musicServices?.get().let { it?.isActive=false }
+        if (musicServices!=null && !musicServices?.get().let { it?.mediaPlayer!!.isPlaying })
+        {
+            Log.i("Finishsed Everything","sdf")
+            musicServices?.get().let { it?.mediaPlayer?.pause() }
+            musicServices?.get().let { it?.stopForeground(true) }
+
+        }
 
     }
 
@@ -85,17 +74,5 @@ class MainActivity : AppCompatActivity(),ServiceConnection {
 
     override fun onServiceDisconnected(name: ComponentName?) {
 
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (musicServices!=null && !musicServices?.get().let { it?.mediaPlayer!!.isPlaying })
-        {
-            Log.i("Finishsed Everything","sdf")
-            musicServices?.get().let { it?.mediaPlayer?.pause() }
-//            musicServices?.get().let { it?.mediaPlayer?.stop() }
-            musicServices?.get().let { it?.stopForeground(true) }
-
-        }
     }
 }

@@ -168,8 +168,6 @@ class MusicFragment : Fragment(), ServiceConnection {
 
                 }
             }
-
-
         }
 
 

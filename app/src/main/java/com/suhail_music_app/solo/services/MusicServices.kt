@@ -337,10 +337,8 @@ class MusicServices : Service() {
     }
 
     fun setSongDetailsAtBottomSheet() {
-
-
-        var uri = serviceList[position].imagePath
-        var imageUri = Uri.parse(uri)
+        val uri = serviceList[position].imagePath
+        val imageUri = Uri.parse(uri)
 
             mainFragment.get()?.let {it.mainFragmentBinding.bottomSheetSongName.text = serviceList[position].songName}
             mainFragment.get()?.let { it.mainFragmentBinding.bottomSheetduration.text = formatDuration(serviceList[position].duration) } //Todo
